@@ -1,1 +1,1 @@
-# AP4002_MultiThreading_99300029
+# MultiThreading Assignment for the course AP4002

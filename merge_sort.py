@@ -1,4 +1,6 @@
 import multiprocessing
+import time 
+import random 
 
 def mergeSort(arr):
     if len(arr) > 1:
@@ -37,3 +39,14 @@ def parallel(numbers):
     pool = multiprocessing.Pool(processes=2)
     data = pool.map(mergeSort, data)
     merge(data[0], data[1])
+
+if __name__ == '__main__':
+    arr = [random.randint(0, 10**8) for _ in range(100000)]
+    parallel_start_time = time.perf_counter()
+    parallel(arr)
+    parallel_end_time = time.perf_counter()
+    typical_start_time = time.perf_counter()
+    mergeSort(arr)
+    typical_end_time = time.perf_counter()
+    print(f"MergeSort: {typical_end_time - typical_start_time}")
+    print(f"Parallel MergeSort: {parallel_end_time - parallel_start_time}")
